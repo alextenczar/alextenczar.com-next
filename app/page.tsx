@@ -12,6 +12,7 @@ async function getData() {
   let time = DateTime.now().toFormat("H")
   let timeInt = parseInt(time)
   let greeting = ''
+  console.log(time)
   if(timeInt >= 5 && timeInt < 12) {
     greeting = "Good morning!"
   } else if (timeInt >= 12 && timeInt < 17) {
