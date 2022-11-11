@@ -16,14 +16,18 @@ export default function Scroll(props: any) {
 
     function scrollAccelerate() {
         let scrollContainer = document.querySelector('main')
-        console.log(scrollContainer.scrollTop)
-        let scrollVal = scrollContainer.scrollTop
-        if(scrollVal > scrollDir) {
-            scrollContainer?.scrollBy(0, 1)
-        } else {
-            scrollContainer?.scrollBy(0 , -1)
+        console.log(scrollContainer?.scrollTop)
+        let scrollVal = scrollContainer?.scrollTop
+        if( scrollVal !== undefined) {
+            if(scrollVal > scrollDir) {
+                scrollContainer?.scrollBy(0, 1)
+            } else {
+                scrollContainer?.scrollBy(0 , -1)
+            }
+            if(scrollContainer?.scrollTop) {
+                scrollDir = scrollContainer?.scrollTop
+            }
         }
-        scrollDir = scrollContainer?.scrollTop
     }
 
 
