@@ -2,8 +2,18 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+/*   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+}
+
+.content-wrapper {
+  width: calc(85% - (4rem));
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -15,12 +25,115 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+#about, #intro, #contact {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+#about, #contact, #intro {
+  min-height: 100vh;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  position: relative;
+  width: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.in-view .location-pin {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.location-pin {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(-20px);
+  transition-property: all;
+  transition-duration: .5s;
+  transition-delay: .5s;
+}
+
+.about-inner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.blog-title-emoji {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+::selection {
+  color: #fff;
+  background: #000; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  color: #fff;
+  background: #000; /* Gecko Browsers */
+}
+
+@media (max-width: 1050px) {
+    .content-wrapper {
+        width: 100%;
+        max-width: 980px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+  #about, #intro {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-height: 768px) {
+  #about, #intro {
+    font-size: 1.25rem;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
     color: white;
     background: black;
+  }
+} */
+
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

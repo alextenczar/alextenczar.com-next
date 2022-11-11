@@ -1,43 +1,74 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import timeStyles from './CurrentTime.module.scss'
+import { DateTime, Settings } from 'luxon'
+import Link from 'next/link';
+import CurrentTime from './CurrentTime';
+import { Roboto_Mono  } from '@next/font/google'
 
-export default function Home() {
+const robotoMono = Roboto_Mono({ subsets: ['latin'], weight: '400' });
+
+async function getData() {
+  let time = DateTime.now().toFormat("H")
+  let timeInt = parseInt(time)
+  let greeting = ''
+  if(timeInt >= 5 && timeInt < 12) {
+    greeting = "Good morning!"
+  } else if (timeInt >= 12 && timeInt < 17) {
+    greeting = "Good Afternoon!"
+  } else {
+    greeting = "Good Evening!"
+  }
+  return greeting;
+}
+
+export default async function Home() {
+
+  
+  const greeting = await getData();
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
-        </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
+         <div id="intro" className="snap-section">
+            <div className="about-inner">
+              {greeting} <span className="blog-title-emoji">👋</span> Feel Free to get in contact with <a href="#contact">me</a>.
+           </div>
+         </div>
 
-        <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
+         <div id="about" className="snap-section">
+            <div className="about-inner">
+              <p className={`${robotoMono.className} ${timeStyles.timeLine}`}><span className="location-pin">📍</span>&nbsp;Concord,&nbsp;NH,&nbsp;USA:&nbsp;
+                <CurrentTime/>
+              </p>
+              <p id="bio">Hi. I&apos;m a recent MS Graduate of <a href="https://unh.edu/" target="_blank" rel="noreferrer">The University of New Hampshire</a> in Information Technology. Over the past few  years I&apos;ve become especially interested in pursuing web development. I enjoy using Python and React to make my ideas come to life.  I&apos;m currently working as a contract web developer for Tufts University.</p>
+              <a id="resume" target="_blank" rel="noopener noreferrer" download="ResumeAlexTenczar">resume</a>
+            </div>
+          </div>
+      
+         <div id="contact" className="snap-section">
+            <div className="about-inner">
+              <div id="message">
+                <p><a href="https://www.linkedin.com/in/alexander-tenczar/" target="_blank" rel="noopener noreferrer">linkedin</a>, <a href="https://github.com/alextenczar" target="_blank" rel="noopener noreferrer">github</a></p>
+                <p>i would love to hear from you!</p>
+              </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
+              <form id="contact-form" action="https://formspree.io/f/mvovvlro" target="_blank" rel="noopener noreferrer" method="POST">
+                <div className="form-group">
+                  <input type="text"  name="name" className="form-control" placeholder="name" required/>
+                </div>
+                <div className="form-group">
+                  <input type="email" name="_replyto" className="form-control" aria-describedby="emailHelp" placeholder="email" required/>
+                </div>
+                <div className="form-group">
+                  <textarea className="form-control" name="message" rows={10} placeholder="message" required></textarea>
+                </div>
+                <button type="submit" className="btn btn-primary">submit</button>
+              </form>
+            </div>
         </div>
+      
       </main>
 
       <footer className={styles.footer}>
