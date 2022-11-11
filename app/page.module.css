@@ -2,7 +2,7 @@
   height: 100vh;
   padding: 4rem 0;
   position: relative;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */

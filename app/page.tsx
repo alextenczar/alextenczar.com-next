@@ -6,6 +6,7 @@ import Link from 'next/link';
 import CurrentTime from './CurrentTime';
 import { Roboto_Mono  } from '@next/font/google'
 import Greeting from './Greeting';
+import NavIcons from './NavIcons';
 
 const robotoMono = Roboto_Mono({ subsets: ['latin'], weight: '400' });
 
@@ -54,6 +55,7 @@ export default function Home() {
         </div>
       
       </main>
+      <NavIcons></NavIcons>
 
       <footer className={styles.footer}>
         <a

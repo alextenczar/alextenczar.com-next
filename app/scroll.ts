@@ -14,6 +14,26 @@ export default function Scroll(props: any) {
         })
     }
 
+    function scrollNext(this: any, e:any) {
+        e.preventDefault();
+        let nextSection = document.querySelector('.in-view')?.parentElement?.nextElementSibling
+        if(nextSection) {
+            nextSection.scrollIntoView({
+                behavior: 'smooth'
+            })
+        }
+    }
+
+    function scrollPrev(this: any, e:any) {
+        e.preventDefault();
+        let previousSection = document.querySelector('.in-view')?.parentElement?.previousElementSibling
+        if(previousSection) {
+            previousSection.scrollIntoView({
+                behavior: 'smooth'
+            })
+        }
+    }
+
     function scrollAccelerate() {
         let scrollContainer = document.querySelector('main')
         console.log(scrollContainer?.scrollTop)
@@ -39,6 +59,17 @@ export default function Scroll(props: any) {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', scrollEvent)
         })
+        
+        let downButton = document.querySelector('.down-button')
+        if(downButton){
+            downButton.addEventListener('click', scrollNext)
+        }
+
+        let upButton = document.querySelector('.up-button')
+        if(upButton) {
+            upButton.addEventListener('click', scrollPrev)
+        }
+        
         
         const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {

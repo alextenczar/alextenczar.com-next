@@ -9,6 +9,53 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
+.nav-icons-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 1em;
+  left: 0;
+}
+
+.nav-icons-container button {
+  cursor: pointer;
+  border: none;
+  background: rgba(255,255,255,0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-radius: 25%;
+  aspect-ratio: 1;
+}
+
+.up-button {
+  margin-right: 1em;
+}
+
+.down-button svg {
+  animation-name: bounce-down;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+}
+
+.up-button svg {
+  animation-name: bounce-up;
+  animation-duration: 4s;
+  animation-delay: 6s;
+  animation-iteration-count: infinite;
+}
+
+
+
+.nav-icons-container svg {
+  width: 3em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .content-wrapper {
   width: calc(85% - (4rem));
   max-width: 980px;
@@ -136,4 +183,44 @@ a {
   100% {
     transform: rotate(0deg);
   }
+}
+
+@keyframes bounce-down {
+    0%,10%,30%,50%,to {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    20% {
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px)
+    }
+
+    40% {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px)
+    }
+}
+
+@keyframes bounce-up {
+    0% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
+    15% {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px)
+    }
+    20% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
+    30% {
+      -webkit-transform: translateY(-3px);
+      transform: translateY(-3px)
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
 }
