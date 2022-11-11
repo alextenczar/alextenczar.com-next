@@ -150,15 +150,11 @@ a {
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
+  .nav-icons-container button {
+    display: none;
   }
-  body {
-    color: white;
-    background: black;
-  }
-} */
+}
 
 
 @keyframes wave-animation {
