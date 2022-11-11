@@ -5,28 +5,11 @@ import { DateTime, Settings } from 'luxon'
 import Link from 'next/link';
 import CurrentTime from './CurrentTime';
 import { Roboto_Mono  } from '@next/font/google'
+import Greeting from './Greeting';
 
 const robotoMono = Roboto_Mono({ subsets: ['latin'], weight: '400' });
 
-async function getData() {
-  let time = DateTime.now().toFormat("H")
-  let timeInt = parseInt(time)
-  let greeting = ''
-  console.log(time)
-  if(timeInt >= 5 && timeInt < 12) {
-    greeting = "Good morning!"
-  } else if (timeInt >= 12 && timeInt < 17) {
-    greeting = "Good Afternoon!"
-  } else {
-    greeting = "Good Evening!"
-  }
-  return greeting;
-}
-
-export default async function Home() {
-
-  
-  const greeting = await getData();
+export default function Home() {
 
   return (
     <div className={styles.container}>
@@ -34,7 +17,7 @@ export default async function Home() {
 
          <div id="intro" className="snap-section">
             <div className="about-inner">
-              {greeting} <span className="blog-title-emoji">👋</span> Feel Free to get in contact with <a href="#contact">me</a>.
+              <Greeting/> <span className="blog-title-emoji">👋</span> Feel Free to get in contact with <a href="#contact">me</a>.
            </div>
          </div>
 
