@@ -2,14 +2,10 @@
 
 import { DateTime, Settings } from 'luxon'
 import { useState, useEffect } from 'react';
-import { Roboto_Mono  } from '@next/font/google'
-import styles from './CurrentTime.module.scss'
-
-const ibmMono = Roboto_Mono({ subsets: ['latin'], weight: '400' });
 
 export default function CurrentTime() {
   
-  const zone = 'Asia/Tokyo'
+  const zone = 'America/New_York'
   const [date, setDate] = useState({display: '\u00A0', dt: '\u00A0'});
   const [time, setTime] = useState({display:'\u00A0', dt: '\u00A0'});
   const [meridiem, setMeridiem] = useState('\u00A0');
@@ -48,11 +44,9 @@ export default function CurrentTime() {
 
 
   return (
-      <p className={`${ibmMono.className} ${styles.timeLine}`}><span className="location-pin">📍</span>&nbsp;Tokyo,&nbsp;Japan:&nbsp;
-        <span>
-          <time dateTime={date.dt}>{date.display}</time>&nbsp;
-          <time dateTime={time.dt}>{time.display}</time><span>&nbsp;{meridiem}</span>
-        </span>
-      </p>
+    <span>
+      <time dateTime={date.dt}>{date.display}</time>&nbsp;
+      <time dateTime={time.dt}>{time.display}</time><span>&nbsp;{meridiem}</span>
+    </span>
   );
 }
