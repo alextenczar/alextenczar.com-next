@@ -1,9 +1,11 @@
-import './globals.css'
+import '../styles/globals.scss'
 import { Inter } from '@next/font/google'
 import Nav from './Nav';
 import Scroll from './scroll';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+subsets: ['latin'],
+variable: '--inter-font' });
 
 export default function RootLayout({
   children,

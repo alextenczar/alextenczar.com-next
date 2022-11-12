@@ -46,6 +46,13 @@
     font-size: 1.25rem;
 }
 
+a.nav-main-title {
+    color:#000;
+    &:hover {
+        color: #636366;
+    }
+}
+
 .nav-sub-title {
     font-weight: 400;
     color: #636366;
@@ -80,5 +87,8 @@
         left: 22px;
         right: 22px;
         width: calc(100% - 40px);
+    }
+    .nav-right {
+        display: none;
     }
 }

@@ -1,0 +1,35 @@
+.main {
+  height: 100vh;
+  padding: 4rem 0;
+  position: relative;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+@media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
+  .main {
+    scroll-snap-type: y mandatory;
+  }
+}

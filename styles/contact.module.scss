@@ -1,0 +1,27 @@
+.contactForm {
+    width: 100%;
+    button {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        padding: 0;
+        font-weight: bold;
+    }
+}
+
+.formGroup {
+    input, textarea {
+        font-size: 1.25rem;
+        border: none;
+        border-bottom: 2px solid black;
+        width: 100%;
+        transition: border-bottom-color .5s ease;
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid #636366;
+        }
+    }
+    textarea {
+        resize: none;
+    }
+}

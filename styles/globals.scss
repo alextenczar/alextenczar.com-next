@@ -6,19 +6,53 @@ body {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   overflow: hidden;
-/*   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+}
+
+a, button {
+  color: #636366;
+  transition: color .5s ease;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+button, textarea, input {
+  font-family: var(--inter-font);
+}
+
+.nav-icons-inner-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}
+
+.snap-section:focus {
+  outline: none;
 }
 
 .nav-icons-container {
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   bottom: 1em;
   left: 0;
+}
+
+.section-inner {
+  opacity: 0;
+}
+
+.section-inner.in-view {
+  opacity: 1;
+  transition: opacity 2s ease;
 }
 
 .nav-icons-container button {
@@ -29,6 +63,11 @@ body {
   backdrop-filter: saturate(180%) blur(20px);
   border-radius: 25%;
   aspect-ratio: 1;
+  padding: 0;
+}
+
+.nav-icons-container svg:hover {
+  color: black;
 }
 
 .up-button {
@@ -37,45 +76,37 @@ body {
 
 .down-button svg {
   animation-name: bounce-down;
-  animation-duration: 12s;
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
 }
 
 .up-button svg {
   animation-name: bounce-up;
-  animation-duration: 12s;
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
 }
 
-
-
 .nav-icons-container svg {
+  color: #636366;
+  transition: transform .5s ease-in, color .5s ease;
   z-index: 1;
   width: 3em;
   margin-left: auto;
   margin-right: auto;
-  color: black;
+  
+  animation-duration: 12s;
+  animation-delay: 2s;
+  animation-iteration-count: 3;
 }
 
-.content-wrapper {
+.content-wrapper, .nav-icons-inner-container {
   width: calc(85% - (4rem));
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
 }
 
-#about, #intro, #contact {
+.section-inner {
   font-size: 2rem;
   line-height: 1.5;
 }
@@ -93,18 +124,18 @@ a {
 .in-view .location-pin {
   opacity: 1;
   transform: translateY(0px);
+  transition-property: all;
+  transition-duration: .5s;
+  transition-delay: .5s;
 }
 
 .location-pin {
   opacity: 0;
   display: inline-block;
   transform: translateY(-20px);
-  transition-property: all;
-  transition-duration: .5s;
-  transition-delay: .5s;
 }
 
-.about-inner {
+.section-inner {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -128,7 +159,7 @@ a {
 }
 
 @media (max-width: 1050px) {
-    .content-wrapper {
+    .content-wrapper, .nav-icons-inner-container {
         width: 100%;
         max-width: 980px;
         margin-left: auto;
@@ -139,13 +170,13 @@ a {
 }
 
 @media (max-width: 768px) {
-  #about, #intro {
+  .section-inner {
     font-size: 1.5rem;
   }
 }
 
 @media (max-height: 768px) {
-  #about, #intro {
+  .section-inner {
     font-size: 1.25rem;
   }
 }

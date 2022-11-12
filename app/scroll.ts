@@ -1,11 +1,8 @@
 'use client'
 
 import { useEffect } from "react";
-import React from 'react';
 
 export default function Scroll(props: any) {
-
-    let scrollDir = 0
 
     function scrollEvent(this: any, e:any) {
         e.preventDefault();
@@ -14,62 +11,12 @@ export default function Scroll(props: any) {
         })
     }
 
-    function scrollNext(this: any, e:any) {
-        e.preventDefault();
-        let nextSection = document.querySelector('.in-view')?.parentElement?.nextElementSibling
-        if(nextSection) {
-            nextSection.scrollIntoView({
-                behavior: 'smooth'
-            })
-        }
-    }
-
-    function scrollPrev(this: any, e:any) {
-        e.preventDefault();
-        let previousSection = document.querySelector('.in-view')?.parentElement?.previousElementSibling
-        if(previousSection) {
-            previousSection.scrollIntoView({
-                behavior: 'smooth'
-            })
-        }
-    }
-
-    function scrollAccelerate() {
-        let scrollContainer = document.querySelector('main')
-        console.log(scrollContainer?.scrollTop)
-        let scrollVal = scrollContainer?.scrollTop
-        if( scrollVal !== undefined) {
-            if(scrollVal > scrollDir) {
-                scrollContainer?.scrollBy(0, 1)
-            } else {
-                scrollContainer?.scrollBy(0 , -1)
-            }
-            if(scrollContainer?.scrollTop) {
-                scrollDir = scrollContainer?.scrollTop
-            }
-        }
-    }
-
 
     useEffect(() => {
-        //let scrollDir = window.scrollY
-
-        //document.querySelector('main').addEventListener('scroll', scrollAccelerate)
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', scrollEvent)
         })
-        
-        let downButton = document.querySelector('.down-button')
-        if(downButton){
-            downButton.addEventListener('click', scrollNext)
-        }
-
-        let upButton = document.querySelector('.up-button')
-        if(upButton) {
-            upButton.addEventListener('click', scrollPrev)
-        }
-        
         
         const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -81,7 +28,7 @@ export default function Scroll(props: any) {
         })
         })
 
-        let snapDivs = document.querySelectorAll('main .about-inner')
+        let snapDivs = document.querySelectorAll('main .section-inner')
         snapDivs.forEach((div) => {
             observer.observe(div)
         })
