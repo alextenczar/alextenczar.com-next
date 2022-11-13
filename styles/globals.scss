@@ -35,6 +35,10 @@ button, textarea, input {
   align-items: center;
 }
 
+.snap-section {
+  padding: calc(44px + 1rem) 0;
+}
+
 .snap-section:focus {
   outline: none;
 }
@@ -102,6 +106,11 @@ button, textarea, input {
   margin-right: auto;
 }
 
+.nav-icons-inner-container {
+  height: 44px;
+  max-height: 44px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -113,12 +122,8 @@ button, textarea, input {
 
 #about, #contact, #intro {
   min-height: 100vh;
-  margin-top: 1em;
-  margin-bottom: 1em;
   position: relative;
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .in-view .location-pin {

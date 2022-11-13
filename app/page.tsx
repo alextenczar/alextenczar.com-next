@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from '../styles/page.module.css'
+import styles from '../styles/page.module.scss'
 import timeStyles from '../styles/CurrentTime.module.scss'
 import Link from 'next/link';
 import CurrentTime from './CurrentTime';

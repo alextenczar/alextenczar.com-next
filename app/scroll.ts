@@ -6,9 +6,15 @@ export default function Scroll(props: any) {
 
     function scrollEvent(this: any, e:any) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        let scrollElement = document.querySelector(this.getAttribute('href'))
+        scrollElement.scrollIntoView({
+            block: "nearest",
             behavior: 'smooth'
-        })
+        },
+        {
+            duration: 250 // aprox. the duration that chrome uses,
+        }
+        )
     }
 
 

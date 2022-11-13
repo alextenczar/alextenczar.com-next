@@ -1,8 +1,8 @@
 .main {
   height: 100vh;
-  padding: 4rem 0;
+  //padding: 4rem 0;
   position: relative;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: none;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -29,6 +29,10 @@
 }
 
 @media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
   .main {
     scroll-snap-type: y mandatory;
   }
