@@ -192,6 +192,13 @@ button, textarea, input {
   }
 }
 
+@media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
 
 @keyframes wave-animation {
   0% {
