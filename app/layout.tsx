@@ -1,7 +1,7 @@
 import '../styles/globals.scss'
 import { Inter } from '@next/font/google'
-import Nav from './Nav';
-import Scroll from './scroll';
+import Nav from './components/Nav';
+import Scroll from './components/scroll';
 
 const inter = Inter({ 
 subsets: ['latin'],

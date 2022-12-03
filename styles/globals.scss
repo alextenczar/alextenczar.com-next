@@ -8,12 +8,14 @@ body {
   overflow: hidden;
 }
 
-a, button {
+a,
+button {
   color: #636366;
   transition: color .5s ease;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
+
   &:hover {
     color: black;
   }
@@ -24,7 +26,9 @@ h2 {
   font-size: 1.25em;
 }
 
-button, textarea, input {
+button,
+textarea,
+input {
   font-family: var(--inter-font);
 }
 
@@ -43,6 +47,35 @@ button, textarea, input {
   outline: none;
 }
 
+.nav-progress-container {
+  position: fixed;
+  left: 50%;
+  bottom: 1em;
+  height: 44px;
+  max-height: 44px;
+  display: flex;
+  align-items: center;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-radius: 10px;
+  padding: .5em 1em;
+
+
+  svg {
+    fill: #636366;
+    height: 15px;
+    width: 15px;
+  }
+}
+
+.nav-progress-container {
+  svg.progress-in-view {
+    fill: #000;
+  }
+}
+
 .nav-icons-container {
   width: 100%;
   position: fixed;
@@ -52,20 +85,20 @@ button, textarea, input {
 
 .section-inner {
   opacity: 0;
+  transition: opacity 2s ease;
 }
 
 .section-inner.in-view {
   opacity: 1;
-  transition: opacity 2s ease;
 }
 
 .nav-icons-container button {
   cursor: pointer;
   border: none;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255, 255, 255, 0.72);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  border-radius: 25%;
+  border-radius: 10px;
   aspect-ratio: 1;
   padding: 0;
 }
@@ -93,14 +126,16 @@ button, textarea, input {
   width: 3em;
   margin-left: auto;
   margin-right: auto;
-  
+
   animation-duration: 12s;
   animation-delay: 2s;
   animation-iteration-count: 3;
 }
 
-.content-wrapper, .nav-icons-inner-container {
+.content-wrapper,
+.nav-icons-inner-container {
   width: calc(85% - (4rem));
+  padding: 0 .124rem;
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;
@@ -120,7 +155,7 @@ button, textarea, input {
   line-height: 1.5;
 }
 
-#about, #contact, #intro {
+.snap-section {
   min-height: 100vh;
   position: relative;
   width: 100%;
@@ -135,6 +170,7 @@ button, textarea, input {
 }
 
 .location-pin {
+  margin-right: .5rem;
   opacity: 0;
   display: inline-block;
   transform: translateY(-20px);
@@ -156,22 +192,39 @@ button, textarea, input {
 
 ::selection {
   color: #fff;
-  background: #000; /* WebKit/Blink Browsers */
+  background: #000;
+  /* WebKit/Blink Browsers */
 }
+
 ::-moz-selection {
   color: #fff;
-  background: #000; /* Gecko Browsers */
+  background: #000;
+  /* Gecko Browsers */
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
 }
 
 @media (max-width: 1050px) {
-    .content-wrapper, .nav-icons-inner-container {
-        width: 100%;
-        max-width: 980px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 22px;
-        padding-right: 22px;
-    }
+
+  .content-wrapper,
+  .nav-icons-inner-container {
+    width: 100%;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -190,6 +243,10 @@ button, textarea, input {
   .nav-icons-container button {
     display: none;
   }
+
+  .nav-progress-container {
+    bottom: 0;
+  }
 }
 
 @media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
@@ -204,71 +261,92 @@ button, textarea, input {
   0% {
     transform: rotate(0deg);
   }
+
   15% {
     transform: rotate(14deg);
   }
+
   30% {
     transform: rotate(-8deg);
   }
+
   40% {
     transform: rotate(14deg);
   }
+
   50% {
     transform: rotate(-4deg);
   }
+
   60% {
     transform: rotate(10deg);
   }
+
   70% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
 }
 
 @keyframes bounce-up {
-    0%, 72% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-    }
-    74% {
-      -webkit-transform: translateY(-5px);
-      transform: translateY(-5px)
-    }
-    76% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-    }
-    78% {
-      -webkit-transform: translateY(-3px);
-      transform: translateY(-3px)
-    }
-    80%, 100% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-    }
+
+  0%,
+  72% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+
+  74% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px)
+  }
+
+  76% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+
+  78% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px)
+  }
+
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
 }
 
 @keyframes bounce-down {
-    0%, 22% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-    }
-    24% {
-      -webkit-transform: translateY(5px);
-      transform: translateY(5px)
-    }
-    26% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-    }
-    28% {
-      -webkit-transform: translateY(3px);
-      transform: translateY(3px)
-    }
-    30%, 100% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-    }
+
+  0%,
+  22% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+
+  24% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px)
+  }
+
+  26% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+
+  28% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px)
+  }
+
+  30%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
 }

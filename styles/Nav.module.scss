@@ -5,7 +5,7 @@
     top: 0;
     height: 44px;
     max-height: 44px;
-    background: rgba(255,255,255,0.72);
+    background: rgba(255, 255, 255, 0.72);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     color: #000000;
@@ -22,6 +22,7 @@
 
 .nav-right .nav-sub-title {
     padding-right: 1em;
+
     &:last-child {
         padding-right: 0;
     }
@@ -31,6 +32,7 @@
     display: flex;
     align-items: center;
     width: calc(85% - (4rem));
+    padding: 0 .125rem;
     max-width: 980px;
     margin: auto;
     position: relative;
@@ -47,7 +49,8 @@
 }
 
 a.nav-main-title {
-    color:#000;
+    color: #000;
+
     &:hover {
         color: #636366;
     }
@@ -57,6 +60,7 @@ a.nav-main-title {
     font-weight: 400;
     color: #636366;
     transition: color .25s ease-in;
+
     &:hover {
         color: #000;
     }
@@ -71,6 +75,7 @@ a.nav-main-title {
         margin-left: auto;
         width: 50%;
     }
+
     .nav-inner {
         width: 100%;
         max-width: 980px;
@@ -88,6 +93,7 @@ a.nav-main-title {
         right: 22px;
         width: calc(100% - 40px);
     }
+
     .nav-right {
         display: none;
     }
