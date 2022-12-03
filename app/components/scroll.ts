@@ -26,7 +26,10 @@ export default function Scroll(props: any) {
 
         let slides = document.querySelectorAll('.snap-section')
         for (let i = 0; i < slides.length; i++) {
-            slides[i].querySelector('.section-inner').setAttribute("data-position", i.toString());
+            let slide = slides[i].querySelector('.section-inner')
+            if (slide) {
+                slide.setAttribute("data-position", i.toString())!
+            }
         }
 
         let options = {
@@ -35,14 +38,17 @@ export default function Scroll(props: any) {
 
         const observer = new IntersectionObserver((entries, observer,) => {
             entries.forEach(entry => {
-                let entryRelativeProgress = document.querySelectorAll('.nav-progress-container svg')[entry.target.getAttribute('data-position')];
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("in-view")
-                    entryRelativeProgress.classList.add("progress-in-view")
+                let getPosition: any = entry.target.getAttribute('data-position')
+                if (getPosition) {
+                    let entryRelativeProgress = document?.querySelectorAll('.nav-progress-container svg')[getPosition];
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view")
+                        entryRelativeProgress.classList.add("progress-in-view")
 
-                } else {
-                    entry.target.classList.remove("in-view")
-                    entryRelativeProgress.classList.remove("progress-in-view")
+                    } else {
+                        entry.target.classList.remove("in-view")
+                        entryRelativeProgress.classList.remove("progress-in-view")
+                    }
                 }
             })
         }, options)
