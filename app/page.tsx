@@ -29,7 +29,7 @@ export default function Home() {
               <CurrentTime />
             </p>
             <p id="bio">Hi. I&apos;m an MS Graduate of <a href="https://unh.edu/" target="_blank" rel="noreferrer">The University of New Hampshire</a> in Information Technology. Over the past few  years I&apos;ve become absorbed in developing anything that communicates over the internet. I&apos;m currently working as a contract web developer for Tufts University. In my spare time I enjoy building React and Next.js web applications.</p>
-            <a id="resume" target="_blank" rel="noopener noreferrer" href="https://alextenczar.notion.site/My-Resume-b1f5fa653f4a490fb6498e7d9287af69">resume</a>
+            <a id="resume" target="_blank" rel="noopener noreferrer" href="https://alextenczar.notion.site/My-Resume-b1f5fa653f4a490fb6498e7d9287af69">Resume</a>
           </div>
         </div>
 
@@ -55,7 +55,7 @@ export default function Home() {
                 <input type="email" name="_replyto" className="form-control" aria-describedby="emailHelp" placeholder="Email" required />
               </div>
               <div className={contactStyles.formGroup}>
-                <textarea className="form-control" name="message" rows={10} placeholder="Message" required></textarea>
+                <textarea className="form-control" name="message" rows={5} placeholder="Message" required></textarea>
               </div>
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>

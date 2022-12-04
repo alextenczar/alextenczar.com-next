@@ -26,25 +26,25 @@ export default function Scroll(props: any) {
 
         let slides = document.querySelectorAll('.snap-section')
         for (let i = 0; i < slides.length; i++) {
-            let slide = slides[i].querySelector('.section-inner')
-            if (slide) {
-                slide.setAttribute("data-position", i.toString())!
+            //let slide = slides[i].querySelector('.section-inner')
+            if (slides[i]) {
+                slides[i].setAttribute("data-position", i.toString())!
             }
         }
 
         let options = {
-            rootMargin: '0px 0px -50% 0px',
+            threshold: "0.5",
         }
 
         const observer = new IntersectionObserver((entries, observer,) => {
             entries.forEach(entry => {
+                console.log(entry)
                 let getPosition: any = entry.target.getAttribute('data-position')
                 if (getPosition) {
                     let entryRelativeProgress = document?.querySelectorAll('.nav-progress-container svg')[getPosition];
                     if (entry.isIntersecting) {
                         entry.target.classList.add("in-view")
                         entryRelativeProgress.classList.add("progress-in-view")
-
                     } else {
                         entry.target.classList.remove("in-view")
                         entryRelativeProgress.classList.remove("progress-in-view")
@@ -53,7 +53,7 @@ export default function Scroll(props: any) {
             })
         }, options)
 
-        let snapDivs = document.querySelectorAll('main .section-inner')
+        let snapDivs = document.querySelectorAll('main .snap-section')
         snapDivs.forEach((div) => {
             observer.observe(div)
         })

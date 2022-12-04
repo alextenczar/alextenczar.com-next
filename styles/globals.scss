@@ -83,12 +83,12 @@ input {
   left: 0;
 }
 
-.section-inner {
+.snap-section {
   opacity: 0;
   transition: opacity 2s ease;
 }
 
-.section-inner.in-view {
+.snap-section.in-view {
   opacity: 1;
 }
 
@@ -233,7 +233,7 @@ input {
   }
 }
 
-@media (max-height: 768px) {
+@media (max-height: 768px) or (max-width: 500px) {
   .section-inner {
     font-size: 1.25rem;
   }
