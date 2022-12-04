@@ -77,7 +77,7 @@ input {
 }
 
 .nav-icons-container {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   bottom: 1em;
   left: 0;
@@ -222,6 +222,7 @@ footer {
 
   .content-wrapper,
   .nav-icons-inner-container {
+    overflow-x: hidden;
     width: 100%;
     max-width: 980px;
     margin-left: auto;
