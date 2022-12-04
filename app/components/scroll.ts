@@ -44,10 +44,14 @@ export default function Scroll(props: any) {
                     let entryRelativeProgress = document?.querySelectorAll('.nav-progress-container svg')[getPosition];
                     if (entry.isIntersecting) {
                         entry.target.classList.add("in-view")
-                        entryRelativeProgress.classList.add("progress-in-view")
+                        if (entryRelativeProgress) {
+                            entryRelativeProgress.classList.add("progress-in-view")
+                        }
                     } else {
                         entry.target.classList.remove("in-view")
-                        entryRelativeProgress.classList.remove("progress-in-view")
+                        if (entryRelativeProgress) {
+                            entryRelativeProgress.classList.remove("progress-in-view")
+                        }
                     }
                 }
             })
