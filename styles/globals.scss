@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 a,
@@ -203,7 +203,7 @@ input {
 }
 
 .embla {
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .embla__container {
@@ -212,6 +212,10 @@ input {
 
 .embla__slide {
   flex: 0 0 100%;
+}
+
+footer {
+  display: none;
 }
 
 @media (max-width: 1050px) {

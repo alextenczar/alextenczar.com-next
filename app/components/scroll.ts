@@ -33,7 +33,8 @@ export default function Scroll(props: any) {
         }
 
         let options = {
-            threshold: "0.5",
+            rootmargin: "0 0 50% 0",
+            threshold: 0.5,
         }
 
         const observer = new IntersectionObserver((entries, observer,) => {

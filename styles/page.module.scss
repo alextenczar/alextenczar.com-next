@@ -1,21 +1,19 @@
 .main {
-  height: 100vh;
   //padding: 4rem 0;
   position: relative;
-  scroll-snap-type: none;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
+  overflow-y: visible;
+  //-ms-overflow-style: none;
   /* IE and Edge */
-  scrollbar-width: none;
+  // scrollbar-width: none;
   /* Firefox */
 }
 
 .main::-webkit-scrollbar {
-  display: none;
+  //display: none;
 }
 
 .footer {
-  display: flex;
+  display: none;
   flex: 1;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
@@ -32,6 +30,6 @@
 
 @media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
   .main {
-    scroll-snap-type: y mandatory;
+    //scroll-snap-type: y mandatory;
   }
 }
