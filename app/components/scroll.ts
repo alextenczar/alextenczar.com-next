@@ -17,12 +17,12 @@ export default function Scroll(props: any) {
         )
     }
 
-
     useEffect(() => {
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', scrollEvent)
         })
+
 
         let slides = document.querySelectorAll('.snap-section')
         for (let i = 0; i < slides.length; i++) {
@@ -39,7 +39,6 @@ export default function Scroll(props: any) {
 
         const observer = new IntersectionObserver((entries, observer,) => {
             entries.forEach(entry => {
-                console.log(entry)
                 let getPosition: any = entry.target.getAttribute('data-position')
                 if (getPosition) {
                     let entryRelativeProgress = document?.querySelectorAll('.nav-progress-container svg')[getPosition];

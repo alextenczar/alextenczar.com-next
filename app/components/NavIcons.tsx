@@ -1,31 +1,61 @@
 
 'use client';
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, MouseEvent } from "react";
+import { setInterval } from "timers";
 
 
 export default function NavIcons() {
 
     const [progressState, setprogress] = useState([]);
+    let touchstartX = 0
+    let touchendX = 0
 
-    function scrollNext(this: any, e: any) {
-        e.preventDefault();
-        let nextSection = document.querySelector('.in-view')?.nextElementSibling
-        if (nextSection) {
-            nextSection.scrollIntoView({
-                behavior: 'smooth'
-            })
+
+    function checkDirection(e: any) {
+        if (touchendX < touchstartX) {
+            scrollPrev()
+        }
+        if (touchendX > touchstartX) {
+            scrollNext()
         }
     }
 
-    function scrollPrev(this: any, e: any) {
-        e.preventDefault();
-        let previousSection = document.querySelector('.in-view')?.previousElementSibling
-        if (previousSection) {
-            previousSection.scrollIntoView({
-                behavior: 'smooth'
-            })
+    function scrollNext(this: any) {
+        setTimeout(() => {
+            let nextSection = document.querySelector('.in-view')?.nextElementSibling
+            if (nextSection) {
+                nextSection.scrollIntoView({
+                    behavior: 'smooth'
+                })
+            }
+        }, 60);
+
+    }
+
+    function scrollPrev(this: any) {
+        setTimeout(() => {
+            let previousSection = document.querySelector('.in-view')?.previousElementSibling
+            if (previousSection) {
+                previousSection.scrollIntoView({
+                    behavior: 'smooth'
+                })
+            }
+        }, 60);
+
+    }
+
+    function progressStart(e: any) {
+        if (e instanceof TouchEvent) {
+            touchstartX = e.changedTouches[0].screenX
         }
+    }
+
+    function progressEnd(e: any) {
+        if (e instanceof TouchEvent) {
+            touchendX = e.changedTouches[0].screenX
+        }
+        checkDirection(e)
     }
 
     useEffect(() => {
@@ -45,12 +75,21 @@ export default function NavIcons() {
             upButton.addEventListener('click', scrollPrev)
         }
 
+        let navProgress = document.querySelector('.nav-progress-container')
+        if (navProgress) {
+            navProgress.addEventListener('touchstart', progressStart)
+            navProgress.addEventListener('touchend', progressEnd)
+        }
         return () => {
             if (upButton) {
                 upButton.removeEventListener('click', scrollPrev)
             }
             if (downButton) {
                 downButton.removeEventListener('click', scrollNext)
+            }
+            if (navProgress) {
+                navProgress.removeEventListener('touchstart', progressStart)
+                navProgress.removeEventListener('touchend', progressEnd)
             }
         }
     }, [])

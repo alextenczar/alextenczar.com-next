@@ -48,6 +48,7 @@ input {
 }
 
 .nav-progress-container {
+  z-index: 1;
   position: fixed;
   left: 50%;
   bottom: 1em;
