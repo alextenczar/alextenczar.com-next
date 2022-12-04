@@ -251,8 +251,8 @@ input {
 
 @media (hover: none) and (pointer: coarse) and (max-device-width: 500px) {
   .snap-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    //scroll-snap-align: start;
+    //scroll-snap-stop: always;
   }
 }
 
