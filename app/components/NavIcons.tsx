@@ -10,7 +10,7 @@ export default function NavIcons() {
     const [progressState, setprogress] = useState([]);
     let touchstartX = 0
     let touchendX = 0
-
+    let direction = 'forwards'
 
     function checkDirection(e: any) {
         if (touchendX < touchstartX) {
@@ -58,6 +58,22 @@ export default function NavIcons() {
         checkDirection(e)
     }
 
+    function progressCycle(e: any) {
+        let nextSection = document.querySelector('.in-view')?.nextElementSibling
+        let previousSection = document.querySelector('.in-view')?.previousElementSibling
+        if (nextSection === null) {
+            direction = 'backwards'
+        }
+        if (previousSection === null) {
+            direction = 'forwards'
+        }
+        if (direction === 'forwards') {
+            scrollNext()
+        } else {
+            scrollPrev()
+        }
+    }
+
     useEffect(() => {
 
         let totalSlides = document.querySelectorAll('.snap-section').length
@@ -79,6 +95,7 @@ export default function NavIcons() {
         if (navProgress) {
             navProgress.addEventListener('touchstart', progressStart)
             navProgress.addEventListener('touchend', progressEnd)
+            navProgress.addEventListener('click', progressCycle)
         }
         return () => {
             if (upButton) {
