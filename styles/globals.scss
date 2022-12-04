@@ -238,13 +238,10 @@ footer {
   }
 }
 
-@media (max-height: 768px) or (max-width: 500px) {
-
-  input,
-  textarea,
-  button,
+@media (max-height: 768px),
+(max-width: 500px) {
   .section-inner {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 }
 
